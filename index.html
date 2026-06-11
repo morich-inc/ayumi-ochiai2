@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>落合 歩 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>落合 歩 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. Wovn Technologies株式会社（ウォーブン テクノロジーズ）</a>
+  <a href="#k2">2. アクシスコンサルティング株式会社</a>
+  <a href="#k3">3. 株式会社タイミー</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">広報・PR / マーケティング</span><span class="badge badge-blue">スタートアップ</span></div>
+  <div class="co-name">Wovn Technologies株式会社（ウォーブン テクノロジーズ）</div>
+  <div class="co-url"><a href="https://wovn.io/ja/" target="_blank">https://wovn.io/ja/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区南青山 2-26-1 D-LIFEPLACE 南青山 9F</td></tr><tr><th>従業員数</th><td>約110名（4割が外国人メンバー、約20の国・地域）</td></tr><tr><th>資金調達</th><td>総調達額54億円</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>toC／toB問わず、様々なWebサイトの裏側で多言語対応をおこなっているホリゾンタルSaaSスタートアップです。</li><li>エンタープライズ企業を中心に様々なニーズがあり、内製でおこなわずとも複数言語に対応可能となります。</li><li>クライアントが「多言語化を辞める」という選択をしない限り、基本的には継続利用し続けていただくため、チャーンレートは1％未満となっています。</li><li>スタートアップでありながら、大手メーカーなどエンタープライズ出身者が集まっているため、大手→スタートアップへの転職も比較的成功しやすい企業とお見受けします。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「世界中の人が、すべてのデータに、母国語でアクセスできるようにする」をミッションに、Web サイト・アプリを最大 43 言語・ 76 のロケール（言語と地域の組み合わせ）に多言語化し、海外戦略・在留外国人対応を成功に導く多言語化ソリューション「WOVN.io」および「WOVN.app」の開発・運営をしています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「世界中の人が、すべてのデータに、母国語でアクセスできるようにする」をミッションに、Web サイト・アプリを最大 43 言語・ 76 のロケール（言語と地域の組み合わせ）に多言語化し、海外戦略・在留外国人対応を成功に導く多言語化ソリューション「WOVN.io」および「WOVN.app」の開発・運営をしています。</p><p>「WOVN.io」は大手企業をはじめ、昨今は、外国人に対する情報発信を企業の社会的責任の一つとする考えが普及してきたこともあり、運行情報・災害情報を多言語化展開していきたい鉄道会社や、日本語が読めない外国人にも母国語で送金や振込など手続きを行えるようにしたい銀行など、社会インフラの企業等18,000 サイト以上へ導入されています。</p><p>国際特許をもつ国際化対応（i18n)の技術を中心に、生成 AI を活用した高品質 AI 翻訳基盤『Maestro』や、多言語サイトの自動運用のための様々な技術開発を行っています。</p><p><strong>主要な導入サイト</strong></p><ul><li>NEC（日本電気株式会社） グループ社内ポータルサイト『ONE NEC.com』</li><li>三井住友カード株式会社 カード会員ページ『Vpass』</li><li>株式会社SmartHR クラウド型人事労務システム『SmartHR』</li><li>ヤンマーホールディングス株式会社 グローバルサイト</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 広報・PR</div>
+          <div class="job-preview">事業拡大に伴うプロダクト認知拡大とブランド構築を担う専任広報担当（一人目広報、もしくはリーダー候補）</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>募集背景</strong></p><p>現在、当社は事業拡大に伴い、プロダクトの認知拡大とブランド構築が急務となっています。これまではマーケティングチームや経営陣が兼務で広報を行ってきましたが、さらなる非連続的な成長を目指すため、専任の広報担当（一人目広報、もしくはリーダー候補）を募集します。</p><p><strong>職務内容</strong></p><p>経営陣やマーケティングチームと連携し、サービス広報（プロダクトPR）とコーポレート広報の両軸を担当していただきます。</p><ul><li>広報・PR コンテンツの企画・発信</li><li>導入事例（ユーザーインタビュー）の取材・記事作成</li><li>オウンドメディアや公式note、SNS の運用・編集</li><li>採用ブランディングに向けた社員インタビューやカルチャー発信</li><li>メディア対応</li><li>プレスリリースの企画・執筆・配信</li><li>メディアリストの作成・開拓、記者との関係構築</li></ul><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>事業会社での広報実務経験（3年以上目安）、または PR・広告代理店での実務経験</li><li>IT・Web・Tech業界に対する基礎的な理解と興味関心</li><li>SaaS ビジネスモデルや、テクノロジー用語への抵抗がないこと</li><li>広報コンテンツの企画・インタビュー・ライティングに関するスキル・経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>B2B SaaS 企業での広報経験</li><li>「一人目広報」としての立ち上げ経験</li><li>マーケティングや法人営業のご経験</li><li>SEO の基礎知識や、リード獲得（Lead Gen）への意識がある方</li><li>ビジネスレベルの英語力</li><li>SNS（X, LinkedIn, Facebook 等）を活用したファンベース形成の経験</li></ul><p><strong>求める人物像</strong></p><ul><li>スタートアップならではのスピード感や変化の激しい環境を楽しみ、自ら主体的にカオスを整理しながら価値を創造できる方</li><li>顧客の成功を自らの成功と捉え、積極的に課題解決に取り組める方</li><li>高い向上心を持ち、成長志向で新しい挑戦を楽しめる方</li><li>自主性を持ちながらも、チームプレイを大切にできる方</li><li>複雑な状況でも冷静に対処し、目標達成に向けて努力を惜しまない方</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京都港区南青山</span><span class="pill">🏠 フルフレックス</span><span class="pill">✅ 年次有給29日〜</span></div>
+      </div>
+    </div>
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 マーケティング</div>
+          <div class="job-preview">大手企業をターゲットとしたマーケティング活動全般をリードし、将来のお客様との初回接点を設計・最大化</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>職務概要</strong></p><p>大手企業をターゲットとしたマーケティング活動全般をリードいただき、将来のお客様との初回接点を設計・最大化することがミッションです。オフラインマーケティング、Webマーケティング、コンテンツマーケティング、カスタマーマーケティングといった複数領域を横断し、戦略立案から実行までを主導していただきます。</p><p><strong>オフラインマーケティング</strong></p><ul><li>自社主催カンファレンスの戦略設計、企画・立案、実行管理</li><li>外部カンファレンスへの出展戦略の策定、実行ディレクション</li></ul><p><strong>Webマーケティング</strong></p><ul><li>リード獲得を目的とした広告戦略の設計と運用ディレクション</li><li>SEO 戦略の立案と改善施策の実行管理</li><li>サービスサイトやオウンドメディアの運営におけるKPI設計と改善サイクル推進</li><li>CRM ツールを活用したデータ分析と施策設計</li></ul><p><strong>コンテンツマーケティング</strong></p><ul><li>リード獲得・認知拡大につながる記事コンテンツの企画・編集</li><li>ユーザーインタビューの企画・ディレクション</li><li>広報・PR 戦略の立案と施策推進</li></ul><p><strong>カスタマーマーケティング</strong></p><ul><li>既存顧客向けナーチャリング戦略の設計と実行リード</li><li>ユーザーコミュニティの戦略的運営とエンゲージメント強化</li><li>ユーザーイベントの企画・集客・運営の全体設計</li></ul><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>B2B 領域でのマーケティング経験（目安3年以上）</li><li>マーケティング領域において、戦略立案〜実行〜分析・改善までをリードした経験</li><li>データを用いた戦略立案〜実行〜振り返りのサイクル運用スキル</li><li>CRM / SFA（Salesforce など）の活用・導入経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>エンタープライズ向け SaaS ビジネスにおけるマーケティング業務の経験</li><li>メンバーマネジメント、育成の経験</li><li>ABM の運用経験</li><li>Webサイト構築やシステム開発のプロジェクトに携わった経験（ディレクション、要件定義、開発実務など）</li><li>B2B SaaS の事業拡大を推進した経験</li><li>Web・アプリ領域（CMS / CDN / 多言語化等）のドメイン知識</li><li>SaaS や IT サービスの法人営業の経験</li><li>コンサルティングファームにおける戦略策定・業務改革領域の経験</li></ul><p><strong>理論年収</strong></p><p>600 万円 ～ 800万円（多少の上振れは相談可）</p>
+        <div class="meta-pills"><span class="pill">📍 東京都港区南青山</span><span class="pill">🏠 フルフレックス</span><span class="pill">💰 600-800万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://wovn.io/ja/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">広告宣伝担当</span><span class="badge badge-blue">グロース市場上場</span></div>
+  <div class="co-name">アクシスコンサルティング株式会社</div>
+  <div class="co-url"><a href="https://www.axc.ne.jp/" target="_blank">https://www.axc.ne.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都千代田区麹町4-8 麹町クリスタルシティ6F・14F</td></tr><tr><th>設立</th><td>2002年</td></tr><tr><th>上場区分</th><td>東京証券取引所グロース市場（2023年3月上場）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>2023年3月に東京証券取引所グロース市場に新規上場。</li><li>【リモートワーク/フレックス/OpenWork高評価/上場企業】</li><li>コンサルティングファームやIT業界向けに課題の発見、解決、さらに新しい価値の創造に答えるため、正社員採用、フリーコンサル、スポットコンサルなどの複合的なサービスを展開している同社。</li><li>あらゆる企業や組織の課題解決と価値創造にパートナーとして寄り添うと同時に、働く一人ひとりに柔軟な働き方や自律的なキャリア形成、活躍の場の広がりを提供しています。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">高度プロフェッショナル人材の紹介を専門として2002年に設立。創業以来掲げる「人が活きる、人を活かす」という変わらない理念を「軸」（Axis）として、HR事業を通じて、新しい価値を創造し、すべての人が活き活きと働く社会創りを目指されています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>高度プロフェッショナル人材の紹介を専門として2002年に設立。創業以来掲げる「人が活きる、人を活かす」という変わらない理念を「軸」（Axis）として、HR事業を通じて、新しい価値を創造し、すべての人が活き活きと働く社会創りを目指されています。</p><p>今までに約5,000名の現役コンサルタント約20,000名の転職志望者を支援、コンサルティングファームやIT業界への人材紹介を強みとしています。</p><p>2021年に子会社である株式会社ケンブリッジ・リサーチ研究所とのグループの体制を変更。それにより、DX人材の紹介サービスを強化しています。フリーコンサルタントのキャリア支援だけにとどまらず、戦略立案からプロジェクトマネジメントの実行、その先のアドバイスまで、企業の成長を見据えた質の高いＣＸＯ（経営層）・ハイキャリア採用の支援、またデジタルトランスフォーメーションの開発支援コンサルティングにも力を入れており、約5000人の登録があるDXコンサル人材のあっせんを行い、企業のDX戦略立案・推進を支援しています。</p><p><strong>サービス体制</strong></p><ul><li>アクシスコンサルティング：コンサルティングファーム様向け人材紹介事業／フリーコンサル/スポットコンサル事業</li><li>ケンブリッジ・リサーチ研究所：事業会社様向け人材紹介事業（Digital、CxOを中心としたハイエンド領域）</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【マーケティング部】広告宣伝担当</div>
+          <div class="job-preview">中期経営計画に基づくブランド投資強化により、更なるtoB、toCの認知向上を目指すオフライン・オンライン融合施策を担当</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>募集背景</strong></p><p>当社では、中期経営計画の中で、ブランド投資の強化を策定。更なるtoB、toCの認知向上を目指し、事業拡大の礎を作りたいと考えております。オフライン、オンラインを融合させた認知拡大施策のご経験を持つ人材を募集します。</p><p><strong>業務内容</strong></p><ul><li>プロモーション戦略の企画立案：事業戦略やブランド方針に基づき、テレビ、デジタル、OOHなどを組み合わせた効果的な宣伝施策を企画</li><li>テレビCM、動画広告などの大型施策の企画〜制作進行：クリエイティブ企画立案、制作会社/代理店との調整、制作スケジュールや品質の管理を担当</li><li>メディアプランニング、広告運用管理：テレビ/デジタル広告などの媒体選定、出稿プラン策定、運用〜効果分析を行い、費用対効果を最大化する</li><li>クリエイティブディレクション、メッセージ統一：コピー、ビジュアル、トーンを統一し、ブランドの一貫性と訴求力を高める</li><li>ブランド価値、認知度向上の推進：各施策の成果を分析し、継続的にブランドの浸透とイメージ強化を実施</li><li>社内関係部署（営業、マーケティング、システム）との連携、調整</li></ul><p><strong>働く魅力</strong></p><ul><li>テレビCMやデジタル広告など、影響力の大きい施策を自ら企画〜推進でき、社会に広くブランドを浸透させる手応えを実感できる</li><li>少数精鋭体制であり、アイデア提案から実行までをスピーディーに推進できる。個人の発想と判断がダイレクトに成果へつながる環境</li><li>広告代理店、制作会社、社内チームと協働し、企画を&quot;形にする&quot;過程で高いコミュニケーション力とディレクション力を磨ける</li><li>ブランドの印象や成長に直結する役割として、「世の中にどう見られるか」を自らの手で創り上げる大きなやりがいがある</li><li>フルフレックス制度やリモートワークも可能で、柔軟な働き方を実現</li></ul><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>広告、宣伝、マーケティング領域での実務経験（目安：3年以上）※事業会社または広告代理店でのプロモーション企画、広告運用、ブランド施策いずれかのご経験をお持ちの方</li><li>テレビCM、デジタル広告などの制作、出稿に関する知識や実務経験</li><li>社内外関係者との調整、プロジェクト推進スキル</li><li>ブランドやクリエイティブに対する高い感度と興味</li><li>論理的思考力と数値分析力（広告効果やブランド指標などのデータをもとに、施策の改善提案ができる方）</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>大規模プロモーションの企画〜運用経験（テレビCM、デジタル広告、OOHなどを組み合わせた統合キャンペーンの企画〜実行経験をお持ちの方）</li><li>メディアプランニング、広告効果分析の高度なスキル（複数媒体の出稿計画立案や、KPI/ROI分析を通じた最適化の実務経験をお持ちの方）</li><li>広告代理店、制作会社との折衝やディレクション経験（クリエイティブ制作から納品、放映までをリードし、品質とスケジュールを管理できる方）</li><li>ブランドコミュニケーション戦略の設計経験（ブランドトーン、メッセージ設計、クリエイティブガイドライン策定などを主導したご経験をお持ちの方）</li><li>マーケティング戦略、事業戦略への理解（企業やサービスの成長戦略を踏まえ、宣伝施策を中長期的なブランド投資として考えられる方）</li></ul><p><strong>年収</strong></p><p>6,500,000 円 - 8,500,000 円 ※現年収考慮のうえ、決定させていただきます。</p>
+        <div class="meta-pills"><span class="pill">📍 東京都千代田区麹町</span><span class="pill">🏠 フルフレックス</span><span class="pill">💰 650-850万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.axc.ne.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">マーケティングオープンポジション</span><span class="badge badge-blue">グロース市場上場</span></div>
+  <div class="co-name">株式会社タイミー</div>
+  <div class="co-url"><a href="https://corp.timee.co.jp/" target="_blank">https://corp.timee.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区東新橋1丁目5−2汐留シティセンター35階</td></tr><tr><th>上場区分</th><td>東京証券取引所グロース市場（2024年7月上場）</td></tr><tr><th>時価総額</th><td>約1380億円（公開価格ベース）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>「スキマバイト」を超えた&quot;信頼インフラ&quot;づくりに挑戦：タイミーが目指すのは、人材マッチングサービスの枠を超えた「信頼が循環する社会」の実現です。働いた実績や経験が正当に評価され、新たな挑戦機会につながる仕組みづくりを通じて、日本の労働市場そのものの変革に携わることができます。</li><li>Vision2030実現に向けた第二創業期の中核メンバーとして活躍できます：急成長企業としての基盤を築いた今、タイミーは次なる成長ステージへ進んでいます。完成された組織で役割を担うのではなく、事業・組織・カルチャーづくりを自ら推進しながら、会社の未来を共創できるフェーズです。</li><li>専門性と越境力を持つ人材が活躍できるカルチャー：タイミーでは、自らの専門領域を磨くだけでなく、事業全体の課題解決に主体的に関わる姿勢が求められます。変化を前向きに楽しみ、職種の枠を越えて挑戦できる環境の中で、将来の事業責任者や経営人材を目指せます。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「一人ひとりの時間を豊かに」をビジョンに掲げ、スキマバイトサービス「タイミー」を中心に、日本の労働市場が抱える人手不足や働き方の課題解決に挑む急成長企業です。物流・飲食・小売・ホテル・介護など幅広い業界で導入が進み、登録ワーカー数1,000万人超、導入事業者数20万社超を誇る業界を代表するプラットフォームへと成長しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「一人ひとりの時間を豊かに」をビジョンに掲げ、スキマバイトサービス「タイミー」を中心に、日本の労働市場が抱える人手不足や働き方の課題解決に挑む急成長企業です。物流・飲食・小売・ホテル・介護など幅広い業界で導入が進み、登録ワーカー数1,000万人超、導入事業者数20万社超を誇る業界を代表するプラットフォームへと成長しています。</p><p>一方で、タイミーが目指しているのは単なるスポットワークサービスの拡大ではありません。掲げる「Vision2030」では、「働いた実績や経験が信頼として蓄積され、その信頼が次の機会につながる社会」の実現を目指しています。学歴や職歴だけでは測れない個人の価値を可視化し、誰もが挑戦機会を得られる新たな社会インフラの構築に取り組んでいます。</p><p>現在は、事業基盤を確立した第一創業期を経て、Vision2030実現に向けた「第二創業期」とも呼べる重要なフェーズです。既存事業の成長に加え、新たな価値創出や事業領域の拡張、組織進化を同時に推進しており、社会課題解決と事業成長を両立しながら未来の働く仕組みづくりに挑戦できる環境が広がっています。</p><p>2024年7月、東京証券取引所のグロース市場へ上場。公開価格ベースの時価総額は約1380億円で、1994年以降に国内で上場したアプリケーション・ソフトウェア企業95社の中で最大規模のＩＰＯとなっています。</p><p><strong>代表取締役 小川嶺氏</strong></p><p>1997年生まれ東京都出身。高校時代から起業を志し、高校生の時にリクルート/サイバーエージェントでのインターンを経験。2017年、立教大学在学中にアパレル関連事業のRecolleを立ち上げるも１年で事業転換を決意。スキマバイトアプリ「タイミー」の開発に着手。社名を「株式会社タイミー」に登記変更し、代表取締役に就任、2018年8月にアプリをリリース。将棋は認定2段の腕前。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 マーケティングオープンポジション</div>
+          <div class="job-preview">Two-sided Platformである「タイミー」のtoC・toB双方のマーケティングに横断的に携わる成長ポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>募集背景</strong></p><p>タイミーは「『はたらく』を通じて人生の可能性を広げるインフラをつくる」というミッションのもと、スキマバイトアプリ「タイミー」を提供しています。深刻化する労働人口不足という社会課題に対し、企業の人手不足解消や個々人の多様な働き方を支援することで、社会に貢献しています。現在、1,000万人を超えるワーカーの方々にご利用いただき、20万社以上の企業様に導入、全国40万以上の事業所でご活用いただいています。(2026年1月末時点)</p><p>更なる事業成長とミッション達成のためには、より多くのワーカーと企業のマッチング最大化が不可欠です。そこで、toCおよびtoB双方のマーケティングにおいて、当社の成長を牽引いただける方を募集します！事業の成長とともに自身の成長を楽しみ、変化にポジティブかつ柔軟に取り組める方を歓迎します。</p><p><strong>業務内容</strong></p><p>Two-sided Platformである「タイミー」の特性上、toC（ワーカー）およびtoB（事業者）双方のマーケティング業務に横断的に携わっていただきます。具体的な業務は、ご経験や適性、そして事業フェーズに応じて以下いずれか、または複数の領域をお任せします。</p><p><strong>【CRMマーケティング全般の企画・実行】</strong></p><ul><li>toC（インストール〜マッチング）およびtoB（リード獲得〜ナーチャリング）におけるLTV向上、エンゲージメント向上を目的としたCRM戦略の立案から実行、検証までの一貫したオーナーシップ</li><li>定性・定量データ（ユーザーデータ、市場データなど）に基づいた顧客理解、課題探索、マーケティング戦略策定</li><li>プロダクト部門や事業本部、マーケティング本部を横断したPM業務</li></ul><p><strong>【アプリマーケティング全般のグロース】</strong></p><ul><li>toCアプリのグロースにおけるプロジェクトマネジメント（場合によってはハンズオンでの実行も含む）</li><li>エリアにおける計画のオーナーシップ</li><li>パートナー（代理店等）のディレクション</li></ul><p><strong>【新規事業領域（介護領域など）のマーケティングマネジメント】</strong></p><ul><li>toCアプリのグロース全般におけるプロジェクトマネジメント。（場合によってはハンズオンでの実行も含む）</li><li>toBサービスのグロース全般におけるプロジェクトマネジメント（場合によってはハンズオンでの実行も含む）</li><li>パートナーのディレクション</li></ul><p><strong>ポジションの魅力</strong></p><ul><li>急成長中の事業の中核として、マーケティング業務の執行にあたることができます。</li><li>ワーカー（toC）と事業者（toB）の両面市場でマーケティングに取り組むことができ、Two-sided Platformならではのダイナミズムを経験できます。</li><li>社会課題である人手不足に向き合い、社会貢献性の高い事業に携わることができます。</li><li>個人の裁量権が大きく、高い目標達成に向けてチームと一丸となって取り組む経験ができます。</li></ul><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><p>以下のいずれかのご経験をお持ちの方</p><ul><li>①CRMマーケターをご志向の場合：事業会社または支援会社において、CRM戦略の企画、実行のご経験、CRMの企画から実行、検証まで一貫して担当し、定量的な成果（例：LTV向上、エンゲージメント向上など）を出したご経験、CRM接客ツール（GFA, MA, kartsなど）の活用経験または導入経験</li><li>②アプリマーケターをご志向の場合：アプリマーケティング実務に関する幅広いご経験（3年以上）</li><li>③新規事業領域（介護領域など）マーケティングマネージャーをご志向の場合：toCもしくはtoBのサービス・プロダクトのマーケティング領域に関する幅広いご経験（3年以上）</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>特定の業界（例：小売、ホテル、飲食、介護など）での営業・マーケティングのご経験</li><li>マネジメント経験</li><li>IT事業会社においてサービスの拡大を手掛けられたご経験</li></ul><p><strong>こんな人と働きたい</strong></p><ul><li>事業やサービスへの強いオーナーシップを持ち、本質的な課題に向き合える方、コミット度合いが強い方</li><li>高い目標に対して、チームと連携しながら取り組むことを楽しめる方</li><li>結果や数値改善に向け、既存の手法にとらわれずに柔軟に対応できる方</li><li>自身のスキル向上のため、ポジションやキャリアなど関係なく学ぼうとするスタンスがある方</li><li>変化にポジティブに、柔軟に対応できる方</li></ul><p><strong>年収</strong></p><p>6,000,000 円 - 12,000,000円 ※想定年収構成：ベース給与 ＋ 賞与 ※対象者のみShort-term Incentiveを追加支給 ※年2回の人事考課にて給与改定あり</p>
+        <div class="meta-pills"><span class="pill">📍 東京都港区東新橋</span><span class="pill">🏠 リモート週3日出社</span><span class="pill">💰 600-1200万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.timee.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが落合 歩 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
